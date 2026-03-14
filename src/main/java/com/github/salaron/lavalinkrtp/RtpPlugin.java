@@ -39,7 +39,7 @@ public class RtpPlugin extends PluginEventHandler {
 
     @PatchMapping("/v4/sessions/{sessionId}/players/{guildId}/rtp")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateRtpConnection(@PathVariable String sessionId, @PathVariable Long guildId, @RequestBody RtpOptions options) {
+    public void updateRtpConnection(@PathVariable("sessionId") String sessionId, @PathVariable("guildId") Long guildId, @RequestBody RtpOptions options) {
         var key = new StreamKey(sessionId, guildId);
         var streamer = streamers.get(key);
         if (streamer == null) {
